@@ -1,81 +1,42 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Collections.Generic;
 using UdemyCurso.Model;
-using UdemyCurso.Model.Context;
+using UdemyCurso.Repository;
 
 namespace UdemyCurso.Services.Implementations
 {
     public class PersonServiceImplementations : IPersonService
     {
-        private MySQLContext _context;
-        public PersonServiceImplementations(MySQLContext context)
+        private readonly IPersonRepository repository;
+
+        public List<Person> FindAll()
         {
-            _context = context;
+            return this.repository.FindAll();
+        }
+
+        public Person FindById(long id)
+        {
+            return this.repository.FindById(id);
+        }
+        public PersonServiceImplementations(IPersonRepository repository)
+        {
+            this.repository = repository;
         }
 
         public Person Create(Person person)
         {
-            try
-            {
-                _context.Add(person);
-                _context.SaveChanges();
-            }
-            catch (Exception)
-            {
-                throw;
-            }
+            return this.repository.Create(person);
+        }
+
+        public Person Update(Person person)
+        {
+            this.repository.Update(person);
             return person;
         }
 
         public void Delete(long id)
         {
-            var result = _context.Persons.SingleOrDefault(p => p.Id.Equals(id));
-            if (result != null)
-            {
-                try
-                {
-                    _context.Persons.Remove(result);
-                    _context.SaveChanges();
-                }
-                catch (Exception)
-                {
-                    throw;
-                }
-            }
+            this.repository.Delete(id);
 
-        }
-
-        public List<Person> FindAll()
-        {
-            return _context.Persons.ToList();
-        }
-
-        public Person FindById(long id)
-        {
-            return _context.Persons.SingleOrDefault(p => p.Id.Equals(id));
-        }
-
-        public Person Update(Person person)
-        {
-            bool exists = _context.Persons.Any(p => p.Id.Equals(person.Id));
-            if (!exists) return new Person();
-
-            var result = _context.Persons.SingleOrDefault(p => p.Id.Equals(person.Id)); 
-            if (result != null)
-            {
-                try
-                {
-                    _context.Entry(result).CurrentValues.SetValues(person);
-                    _context.SaveChanges();
-                }
-                catch (Exception)
-                {
-                    throw;
-                }
-            }
-            
-            return person;
         }
     }
 }

@@ -7,6 +7,8 @@ using Microsoft.EntityFrameworkCore;
 using UdemyCurso.Model.Context;
 using UdemyCurso.Services;
 using UdemyCurso.Services.Implementations;
+using UdemyCurso.Repository;
+using UdemyCurso.Repository.Implementations;
 
 namespace UdemyCurso
 {
@@ -27,9 +29,9 @@ namespace UdemyCurso
             var connection = Configuration["MySQLConnection:MySQLConnectionString"];
             services.AddDbContext<MySQLContext>(options => options.UseMySql(connection));
 
-
             // Dependency Injection
             services.AddScoped<IPersonService, PersonServiceImplementations>();
+            services.AddScoped<IPersonRepository, PersonRepositoryImplementations>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -10,5 +10,7 @@ namespace UdemyCurso.Repository
         Person FindById(long id);
         Person Update(Person person);
         void Delete(long id);
+
+        bool Exists(long id);
     }
 }
