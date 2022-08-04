@@ -10,23 +10,23 @@ namespace UdemyCurso.Controllers
     public class PersonController : ControllerBase
     {
         private readonly ILogger<PersonController> _logger;
-        private IPersonService _personsService;
+        private IPersonService personsService;
         public PersonController(ILogger<PersonController> logger, IPersonService personsService)
         {
             _logger = logger;
-            _personsService = personsService;
+            this.personsService = personsService;
         }
 
         [HttpGet]
         public IActionResult Get()
         {
-            return Ok(_personsService.FindAll());
+            return Ok(this.personsService.FindAll());
         }
 
         [HttpGet("{id}")]
         public IActionResult Get(long id)
         {
-            var person = _personsService.FindById(id);
+            var person = this.personsService.FindById(id);
             if(person == null) return NotFound();
             return Ok(person);
         }
@@ -35,20 +35,20 @@ namespace UdemyCurso.Controllers
         public IActionResult Post([FromBody] Person person)
         {
             if (person == null) return BadRequest();
-            return Ok(_personsService.Create(person));
+            return Ok(this.personsService.Create(person));
         }
 
         [HttpPut]
         public IActionResult Put([FromBody] Person person)
         {
             if (person == null) return BadRequest();
-            return Ok(_personsService.Update(person));
+            return Ok(this.personsService.Update(person));
         }
 
         [HttpDelete("{id}")]
         public IActionResult Delete(long id)
         {
-             _personsService.Delete(id);
+             this.personsService.Delete(id);
             return NoContent(); ;
         }
     }

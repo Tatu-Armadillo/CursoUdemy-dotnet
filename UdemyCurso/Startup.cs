@@ -45,6 +45,9 @@ namespace UdemyCurso
             // Dependency Injection
             services.AddScoped<IPersonService, PersonServiceImplementations>();
             services.AddScoped<IPersonRepository, PersonRepositoryImplementations>();
+            
+            services.AddScoped<IBookService, BookServiceImplementations>();
+            services.AddScoped<IBookRepository, BookRepositoryImplementations>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

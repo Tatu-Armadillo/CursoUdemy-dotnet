@@ -7,6 +7,10 @@ namespace UdemyCurso.Services.Implementations
     public class PersonServiceImplementations : IPersonService
     {
         private readonly IPersonRepository repository;
+        public PersonServiceImplementations(IPersonRepository repository)
+        {
+            this.repository = repository;
+        }
 
         public List<Person> FindAll()
         {
@@ -16,10 +20,6 @@ namespace UdemyCurso.Services.Implementations
         public Person FindById(long id)
         {
             return this.repository.FindById(id);
-        }
-        public PersonServiceImplementations(IPersonRepository repository)
-        {
-            this.repository = repository;
         }
 
         public Person Create(Person person)
