@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using UdemyCurso.Model.BaseEntity;
+using UdemyCurso.Model;
 
 namespace UdemyCurso.Repository
 {

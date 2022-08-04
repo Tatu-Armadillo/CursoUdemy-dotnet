@@ -6,8 +6,8 @@ namespace UdemyCurso.Services.Implementations
 {
     public class BookServiceImplementations : IBookService
     {
-        private readonly IBookRepository repository;
-        public BookServiceImplementations(IBookRepository repository)
+        private readonly IRepository<Book> repository;
+        public BookServiceImplementations(IRepository<Book> repository)
         {
             this.repository = repository;
         }

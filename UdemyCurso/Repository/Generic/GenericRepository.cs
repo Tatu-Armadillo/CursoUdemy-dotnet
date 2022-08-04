@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Microsoft.EntityFrameworkCore;
-using UdemyCurso.Model.BaseEntity;
+using UdemyCurso.Model;
 using UdemyCurso.Model.Context;
 
 namespace UdemyCurso.Repository.Generic

@@ -12,6 +12,7 @@ using UdemyCurso.Repository.Implementations;
 using Serilog;
 using System;
 using System.Collections.Generic;
+using UdemyCurso.Repository.Generic;
 
 namespace UdemyCurso
 {
@@ -47,7 +48,9 @@ namespace UdemyCurso
             services.AddScoped<IPersonRepository, PersonRepositoryImplementations>();
             
             services.AddScoped<IBookService, BookServiceImplementations>();
-            services.AddScoped<IBookRepository, BookRepositoryImplementations>();
+            // services.AddScoped<IBookRepository, BookRepositoryImplementations>();
+
+            services.AddScoped(typeof(IRepository<>), typeof(GenericRepository<>));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
