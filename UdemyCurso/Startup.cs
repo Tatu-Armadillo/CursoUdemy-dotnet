@@ -8,7 +8,6 @@ using UdemyCurso.Model.Context;
 using UdemyCurso.Services;
 using UdemyCurso.Services.Implementations;
 using UdemyCurso.Repository;
-using UdemyCurso.Repository.Implementations;
 using Serilog;
 using System;
 using System.Collections.Generic;
@@ -45,10 +44,7 @@ namespace UdemyCurso
 
             // Dependency Injection
             services.AddScoped<IPersonService, PersonServiceImplementations>();
-            services.AddScoped<IPersonRepository, PersonRepositoryImplementations>();
-            
             services.AddScoped<IBookService, BookServiceImplementations>();
-            // services.AddScoped<IBookRepository, BookRepositoryImplementations>();
 
             services.AddScoped(typeof(IRepository<>), typeof(GenericRepository<>));
         }

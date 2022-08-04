@@ -6,8 +6,8 @@ namespace UdemyCurso.Services.Implementations
 {
     public class PersonServiceImplementations : IPersonService
     {
-        private readonly IPersonRepository repository;
-        public PersonServiceImplementations(IPersonRepository repository)
+        private readonly IRepository<Person> repository;
+        public PersonServiceImplementations(IRepository<Person> repository)
         {
             this.repository = repository;
         }
