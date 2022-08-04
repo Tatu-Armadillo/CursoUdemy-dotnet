@@ -17,7 +17,7 @@ namespace UdemyCurso.Services.Implementations
             return this.repository.FindAll();
         }
 
-        public Book FindById(int id)
+        public Book FindById(long id)
         {
             return this.repository.FindById(id);
         }
@@ -33,7 +33,7 @@ namespace UdemyCurso.Services.Implementations
             return book;
         }
 
-        public void Delete(int id)
+        public void Delete(long id)
         {
             this.repository.Delete(id);
 

@@ -7,8 +7,8 @@ namespace UdemyCurso.Services
     {
         Book Create(Book book);
         List<Book> FindAll();
-        Book FindById(int id);
+        Book FindById(long id);
         Book Update(Book book);
-        void Delete(int id);
+        void Delete(long id);
     }
 }

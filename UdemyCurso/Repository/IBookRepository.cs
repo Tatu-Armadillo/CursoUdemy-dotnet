@@ -7,8 +7,8 @@ namespace UdemyCurso.Repository
     {
         Book Create(Book person);
         List<Book> FindAll();
-        Book FindById(int id);
+        Book FindById(long id);
         Book Update(Book book);
-        void Delete(int id);
+        void Delete(long id);
     }
 }

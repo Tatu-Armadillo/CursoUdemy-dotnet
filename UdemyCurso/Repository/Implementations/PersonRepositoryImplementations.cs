@@ -42,7 +42,6 @@ namespace UdemyCurso.Repository.Implementations
         }
 
 
-
         public Person Update(Person person)
         {
             bool exists = this.context.Persons.Any(p => p.Id.Equals(person.Id));

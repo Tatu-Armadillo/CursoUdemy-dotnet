@@ -27,7 +27,7 @@ namespace UdemyCurso.Repository.Implementations
             }
             return book;
         }
-        public Book FindById(int id)
+        public Book FindById(long id)
         {
             return this.context.Books.SingleOrDefault(p => p.Id.Equals(id));
         }
@@ -40,7 +40,6 @@ namespace UdemyCurso.Repository.Implementations
         {
             return this.context.Books.ToList();
         }
-
 
 
         public Book Update(Book book)
@@ -65,7 +64,7 @@ namespace UdemyCurso.Repository.Implementations
             return book;
         }
 
-        public void Delete(int id)
+        public void Delete(long id)
         {
             var result = this.context.Books.SingleOrDefault(b => b.Id.Equals(id));
             if (result != null)
